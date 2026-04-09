@@ -51,14 +51,14 @@ export default function Home() {
 
   useEffect(() => {
     // Puedes cambiar el endpoint para traer solo algunos productos destacados por tu lógica
-    axios.get("http://localhost:8081/api/productos/disponibles", {
+    axios.get("/api/productos/disponibles", {
       headers: { "x-api-key": "lvlupgamer1306" }
     })
       .then(res => {
         // Selecciona los destacados como prefieras, aquí por ejemplo los primeros 8
         const destacados = res.data.data.slice(0, 8).map(p => ({
           ...p,
-          imagen: `http://localhost:8081/api/productos/imagen/${p.idProducto}`
+          imagen: `/api/productos/imagen/${p.idProducto}`
         }));
         setProductosDestacados(destacados);
       })
