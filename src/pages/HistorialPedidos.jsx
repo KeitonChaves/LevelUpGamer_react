@@ -11,7 +11,7 @@ export default function HistorialPedidos() {
     const idUsuario = usuario.idUsuario;
 
     axios
-      .get(`http://localhost:8083/api/pedidos/usuario/${idUsuario}`, {
+      .get(`/api/pedidos/usuario/${idUsuario}`, {
         headers: { "x-api-key": "lvlupgamer1306" },
       })
       .then((res) => {

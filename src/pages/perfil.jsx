@@ -34,7 +34,7 @@ export default function Perfil() {
       try {
         // ⭐ CORRECCIÓN 1: Agregar /email/ antes del email
         const response = await axios.get(
-          `http://localhost:8080/api/usuarios/email/${userLocal.email}`,
+          `/api/usuarios/email/${userLocal.email}`,
           { headers: { "x-api-key": "lvlupgamer1306" } }
         );
         setUsuario(response.data);
@@ -48,7 +48,7 @@ export default function Perfil() {
         
         // Cargar foto
         const fotoResponse = await axios.get(
-          `http://localhost:8080/api/usuarios/${response.data.idUsuario}/foto`,
+          `/api/usuarios/${response.data.idUsuario}/foto`,
           {
             headers: { "x-api-key": "lvlupgamer1306" },
             responseType: "arraybuffer",
@@ -110,7 +110,7 @@ export default function Perfil() {
     }
     try {
       await axios.put(
-        `http://localhost:8080/api/usuarios/${usuario.idUsuario}`,
+        `/api/usuarios/${usuario.idUsuario}`,
         {
           ...usuario,
           nombre: formData.nombre,
@@ -125,7 +125,7 @@ export default function Perfil() {
         const formImage = new FormData();
         formImage.append("foto", nuevaFoto);
         await axios.patch(
-          `http://localhost:8080/api/usuarios/${usuario.idUsuario}/foto`,
+          `/api/usuarios/${usuario.idUsuario}/foto`,
           formImage,
           {
             headers: {
@@ -137,7 +137,7 @@ export default function Perfil() {
         
         // Recargar foto
         const fotoResponse = await axios.get(
-          `http://localhost:8080/api/usuarios/${usuario.idUsuario}/foto`,
+          `/api/usuarios/${usuario.idUsuario}/foto`,
           {
             headers: { "x-api-key": "lvlupgamer1306" },
             responseType: "arraybuffer",
@@ -161,7 +161,7 @@ export default function Perfil() {
       
       // ⭐ CORRECCIÓN 2: Agregar /email/ antes del email
       const refreshed = await axios.get(
-        `http://localhost:8080/api/usuarios/email/${usuario.email}`,
+        `/api/usuarios/email/${usuario.email}`,
         { headers: { "x-api-key": "lvlupgamer1306" } }
       );
       setUsuario(refreshed.data);

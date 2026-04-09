@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
   const login = async (email, contrasena) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/usuarios/login",
+        `/api/usuarios/login`,
         { email, contrasena },
         {
           headers: { "x-api-key": "lvlupgamer1306" },

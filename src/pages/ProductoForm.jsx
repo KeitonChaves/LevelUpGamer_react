@@ -21,7 +21,7 @@ export default function ProductoForm() {
     const fetchCategorias = async () => {
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get("http://localhost:8081/api/categorias", {
+        const { data } = await axios.get("/api/categorias", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCategorias(data.data);
@@ -35,7 +35,7 @@ export default function ProductoForm() {
       const fetchProducto = async () => {
         try {
           const token = localStorage.getItem("token");
-          const { data } = await axios.get(`http://localhost:8081/api/productos/${id}`, {
+          const { data } = await axios.get(`/api/productos/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           const prod = data.data;
@@ -78,7 +78,7 @@ export default function ProductoForm() {
       const token = localStorage.getItem("token");
 
       // 1. Actualizar datos productos (sin imagen)
-      await axios.put(`http://localhost:8081/api/productos/${id}`, producto, {
+      await axios.put(`/api/productos/${id}`, producto, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export default function ProductoForm() {
         const formData = new FormData();
         formData.append("imagen", imagenFile);
 
-        await axios.put(`http://localhost:8081/api/productos/${id}/imagen`, formData, {
+        await axios.put(`/api/productos/${id}/imagen`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",

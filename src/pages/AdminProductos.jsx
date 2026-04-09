@@ -11,7 +11,7 @@ export default function AdminProductos() {
     const fetchProductos = async () => {
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get("http://localhost:8081/api/productos", {
+        const { data } = await axios.get("/api/productos", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProductos(data.data);
@@ -29,7 +29,7 @@ export default function AdminProductos() {
     if (window.confirm("¿Seguro que quieres eliminar este producto?")) {
       try {
         const token = localStorage.getItem("token");
-        await axios.delete(`http://localhost:8081/api/productos/${idProducto}`, {
+        await axios.delete(`/api/productos/${idProducto}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProductos(productos.filter((p) => p.idProducto !== idProducto));
