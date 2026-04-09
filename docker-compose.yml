@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  web-front:
+    image: levelupgamer-front:latest
+    container_name: web-front
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
